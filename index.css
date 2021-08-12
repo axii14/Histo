@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+}
+.food-menu, .food-menu * {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: system-ui, sans-serif;
+}
+.food-menu {
+    --hs: 220, 15%;
+    --red: #da3f0b;
+    --black-10: #000;
+    --black-20: #000;
+    --white: #000;
+    min-height: 100vh;
+    padding-top: 8vh;
+    padding-bottom: 8vh;
+}
+.food-menu h2 {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 8rem;
+}
+.food-menu h2, .food-menu li span {
+    --text-stroke: 0.005em;
+    font-family: "Metal Mania";
+    -webkit-text-stroke: var(--text-stroke) var(--red);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(to bottom, var(--red), var(--black-10), var(--red));
+}
+.food-menu ul {
+    list-style: none;
+    margin: 8vh auto;
+    padding: 0;
+    width: 1020px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+    gap: 2rem;
+    container-type: inline-size;
+    container-name: list;
+}
+.food-menu .card {
+    background-color: var(--red);
+    color: var(--white);
+    box-shadow: 0 0 1rem -0.25rem black;
+    display: grid;
+    grid-template-areas: "cover title" "cover description";
+    grid-auto-columns: 100px 1fr;
+    align-items: center;
+}
+.food-menu .card img, .food-menu .card span {
+    grid-area: cover;
+}
+.food-menu .card span {
+    place-self: start;
+    transform: translate(-25%, -25%);
+}
+.food-menu .card h3 {
+    grid-area: title;
+}
+.food-menu .card p {
+    grid-area: description;
+}
+.food-menu .card h3, .food-menu .card p {
+    padding: 1rem;
+}
+.food-menu .card img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+.food-menu .card span {
+    --text-stroke: 0.025em;
+    font-size: 3rem;
+    position: relative;
+    padding: 0 0.5ch;
+    z-index: 1;
+}
+.food-menu .card span, .food-menu .card span::before {
+    width: 2.25ch;
+    aspect-ratio: 1;
+}
+.food-menu .card span::before {
+    content: "";
+    background-color: var(--black-10);
+    box-shadow: 0 0 1rem -0.1rem var(--red);
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: skewY(-8deg);
+}
+@container list-item (max-width: 50ch) {
+    .food-menu .card {
+        grid-template-areas: "cover" "title" "description";
+        grid-auto-columns: unset;
+   }
+    .food-menu .card span {
+        place-self: end;
+        transform: translate(25%, 50%);
+   }
+}
+@container list-item (max-width: 40ch) {
+    img {
+        max-height: 25vh;
+   }
+}
+@container list (min-width: 80ch) and (max-width: 110ch) {
+    li:nth-child(3n + 1) {
+        grid-column: -1;
+   }
+}
+.food-menu-sidebar {
+    display: grid;
+    grid-template-columns: minmax(33%, 30ch) 1fr;
+    gap: 2rem;
+}
+.food-menu-sidebar .food-menu {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.food-menu-sidebar .food-menu h2 {
+    font-size: 3rem;
+}
+@font-face {
+    font-family: 'Metal Mania';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/metalmania/v12/RWmMoKWb4e8kqMfBUdPFJdXLiaQ6DQ.woff2) format('woff2');
+    unicode-range: U100-24F, U259, U1E -1EFF, U2020, U20A -20AB, U20AD-20CF, U2113, U2C 58C 7F, UA720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Metal Mania';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/metalmania/v12/RWmMoKWb4e8kqMfBUdPFJdXFiaQ.woff2) format('woff2');
+    unicode-range: U0-0FF, U131, U152-153, U2BB-2BC, U2C 6, U2DA, U2DC, U2000-206F, U2074, U20AC, U2122, U2191, U2193, U2212, U2215, UFEFF, UFFFD;
+}
